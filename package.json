@@ -9,15 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@univerjs/core": "^0.1.0-beta.4",
-    "@univerjs/design": "^0.1.0-beta.4",
-    "@univerjs/docs": "^0.1.0-beta.4",
-    "@univerjs/engine-formula": "^0.1.0-beta.4",
-    "@univerjs/engine-render": "^0.1.0-beta.4",
-    "@univerjs/sheets": "^0.1.0-beta.4",
-    "@univerjs/sheets-formula": "^0.1.0-beta.4",
-    "@univerjs/sheets-ui": "^0.1.0-beta.4",
-    "@univerjs/ui": "^0.1.0-beta.4",
+    "@fortune-sheet/react": "^0.19.2",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18"
