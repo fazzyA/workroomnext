@@ -2,11 +2,28 @@
 
 import { Workbook, WorkbookInstance } from "@fortune-sheet/react";
 import "@fortune-sheet/react/dist/index.css";
-import { useRef } from "react";
+import { useCallback, useRef, useState } from "react";
+import { Sheet } from "@fortune-sheet/core";
 
 function Home (this: any) {
+  const ref = useRef<WorkbookInstance>(null);
+  const [data, setData] = useState<Sheet[]>([
+    {
+      name: "Sheet1",
+      celldata: [{ r: 0, c: 0, v: { v: "fortune" } }],
+      order: 0,
+      // row: 1,
+      // column: 1,
+    },
+  ]);
+  console.log(data)
+  const onChange = useCallback((d: Sheet[]) => {
+    console.log("onchange", d)
+    setData(d);
+  }, []);
     const settings = {
-        data: [{ name: 'Sheet1', celldata: [{ r: 0, c: 0, v: null }] }], // sheet data
+        ref: ref,
+        data: [{ name: 'Sheet1', celldata: [{ r: 0, c: 0, v: "faiza" }] }], // sheet data
         onChange: (data: any) => {
           let resp= data[0].data
           let frows = resp.filter((item:any) => item[0] != null)
@@ -21,10 +38,11 @@ function Home (this: any) {
         // getCellValue(0, 0)
         // More other settings...
    }
-   
+   console.log("getCellValue", ref.current?.getCellValue(0, 0))
+
   return (
     <div style={{height: "100vh"}}>
-        <Workbook {...settings} />
+        <Workbook ref={ref} data={data} onChange={onChange} />
         {/* <div className="column column-25"><input type="text" /></div> */}
     </div>
   );
