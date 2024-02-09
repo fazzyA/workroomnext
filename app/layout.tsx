@@ -24,10 +24,13 @@ export default function RootLayout({
          <Link href="/examples/basic">Basic</Link>
        </li>
        <li>
-         <Link href="/examples/getCellValue">GetCellValue</Link>
+         <Link href="/examples/getCellValue">Get Cell Value</Link>
        </li>
        <li>
-         <Link href="/examples/getSelection">GetSelection</Link>
+         <Link href="/examples/getSelection">Get Selection</Link>
+       </li>
+       <li>
+         <Link href="/examples/setCellValue">Set Cell Value</Link>
        </li>
      </ul>
         {children}
