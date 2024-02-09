@@ -38,6 +38,9 @@ export default function RootLayout({
        <li>
          <Link href="/examples/autoFill">AutoFill Cell</Link>
        </li>
+       <li>
+         <Link href="/examples/setSelection">Merge Selected Cells</Link>
+       </li>
      </ul>
         {children}
       </body>
