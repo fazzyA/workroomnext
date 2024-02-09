@@ -4,6 +4,7 @@ import { Workbook, WorkbookInstance } from "@fortune-sheet/react";
 import "@fortune-sheet/react/dist/index.css";
 import { useCallback, useRef, useState } from "react";
 import { Sheet } from "@fortune-sheet/core";
+import ApiExecContainer from "../ApiExecContainer";
 
 function Home (this: any) {
   const ref = useRef<WorkbookInstance>(null);
@@ -41,10 +42,14 @@ function Home (this: any) {
    console.log("getCellValue", ref.current?.getCellValue(0, 0))
 
   return (
-    <div style={{height: "100vh"}}>
+    <ApiExecContainer onRun={() => {
+      return ref.current?.getCellValue(0, 0);
+    }}>
+      <div style={{height: "100vh"}}>
         <Workbook ref={ref} data={data} onChange={onChange} />
         {/* <div className="column column-25"><input type="text" /></div> */}
-    </div>
+      </div>
+    </ApiExecContainer>
   );
 }
 

@@ -32,6 +32,12 @@ export default function RootLayout({
        <li>
          <Link href="/examples/setCellValue">Set Cell Value</Link>
        </li>
+       <li>
+         <Link href="/examples/setCellFormat">Format Cell</Link>
+       </li>
+       <li>
+         <Link href="/examples/autoFill">AutoFill Cell</Link>
+       </li>
      </ul>
         {children}
       </body>

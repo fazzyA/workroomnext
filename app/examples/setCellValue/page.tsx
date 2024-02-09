@@ -4,6 +4,7 @@ import { Workbook, WorkbookInstance } from "@fortune-sheet/react";
 import "@fortune-sheet/react/dist/index.css";
 import { useCallback, useRef, useState } from "react";
 import { Sheet } from "@fortune-sheet/core";
+import ApiExecContainer from "../ApiExecContainer";
 
 function Home (this: any) {
   const ref = useRef<WorkbookInstance>(null);
@@ -25,9 +26,22 @@ function Home (this: any) {
    ref.current?.setCellValue(3, 5, "=SUM(A4:E4)");
    ref.current?.setCellValue(4, 5, "=SUM(A5:E5)");
   return (
-    <div style={{height: "100vh"}}>
-        <Workbook ref={ref} data={data} onChange={onChange} />
-    </div>
+    <ApiExecContainer
+      onRun={() => {
+        for (let i = 0; i < 5; i += 1) {
+          for (let j = 0; j < 5; j += 1) {
+            ref.current?.setCellValue(i, j, `${i + j}`);
+          }
+        }
+        ref.current?.setCellValue(0, 5, "=SUM(A1:E1)");
+        ref.current?.setCellValue(1, 5, "=SUM(A2:E2)");
+        ref.current?.setCellValue(2, 5, "=SUM(A3:E3)");
+        ref.current?.setCellValue(3, 5, "=SUM(A4:E4)");
+        ref.current?.setCellValue(4, 5, "=SUM(A5:E5)");
+      }}
+    >
+      <Workbook ref={ref} data={data} onChange={onChange} />
+    </ApiExecContainer>
   );
 }
 

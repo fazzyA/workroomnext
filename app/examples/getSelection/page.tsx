@@ -4,6 +4,7 @@ import { Workbook, WorkbookInstance } from "@fortune-sheet/react";
 import "@fortune-sheet/react/dist/index.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Sheet } from "@fortune-sheet/core";
+import ApiExecContainer from "../ApiExecContainer";
 
 function Home (this: any) {
   const ref = useRef<WorkbookInstance>(null);
@@ -12,7 +13,7 @@ function Home (this: any) {
   const [data, setData] = useState<Sheet[]>([
     {
       name: "Sheet1",
-      luckysheet_select_save: [{ row: [0, 1], column: [1, 2] }],
+      luckysheet_select_save: [{ row: [0, 1], column: [0, 1] }],
       celldata: [
         { r: 0, c: 0, v: { v: "0" } },
         { r: 0, c: 1, v: { v: "1" } },
@@ -35,17 +36,20 @@ function Home (this: any) {
     console.log("onchange", d)
     setData(d);
   }, []);
-   console.log("getCellValue", ref.current?.getCellValue(0, 0))
-   useEffect(()=>{
 
-       console.log("getSelection", ref.current?.getSelection())
-   }, [ref])
+  console.log("getSelection", ref.current?.getSelection())
 
   return (
+    <ApiExecContainer
+      onRun={() => {
+        return JSON.stringify(ref.current?.getSelection());
+    }}
+    >
     <div style={{height: "100vh"}}>
         <Workbook ref={ref} data={data} onChange={onChange} />
         {/* <div className="column column-25"><input type="text" /></div> */}
-    </div>
+      </div>
+    </ApiExecContainer>
   );
 }
 
