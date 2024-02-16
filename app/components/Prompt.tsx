@@ -1,5 +1,7 @@
 'use client'
 import React, { useState } from 'react';
+import {Button  ,Textarea} from '@chakra-ui/react';
+
 
 function AIPrompt() {
     const [input, setInput] = useState('');
@@ -28,8 +30,8 @@ function AIPrompt() {
 
     return (
         <div>
-            <textarea className='promptbox' value={input} onChange={(e) => setInput(e.target.value)} />
-            <button onClick={handleGenerateResponse}>Generate Response</button>
+            <Textarea className='promptbox' m={2}  width={300} value={input} onChange={(e) => setInput(e.target.value)} />
+            <Button border={1} borderColor='black' m={3} mt={7} colorScheme='red' onClick={handleGenerateResponse}>Generate Response</Button>
             <p>{output}</p>
         </div>
     );
