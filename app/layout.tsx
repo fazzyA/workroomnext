@@ -1,3 +1,4 @@
+
 'use client'
 import { useState } from 'react';
 import type { Metadata } from "next";
@@ -7,9 +8,10 @@ import AIPrompt from "./components/Prompt";
 import { Providers } from "./providers";
 import { Modal, ModalOverlay, ModalContent,  Input,  Text,  ModalCloseButton, Flex, Button, Link, } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-
+import axios from 'axios';
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -22,6 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [isOpen, setIsOpen] = useState(false);
+  const [input, setInput] = useState('');
 
   // async function getChatGPTResponse(prompt: string) {
   //   const response = await fetch('https://api.openai.com/v1/completions', {
@@ -39,8 +42,16 @@ export default function RootLayout({
   //   const data = await response.json();
   //   return data.choices[0].text.trim();
   // }
-
-
+  async function fetchDataFromAPI() {
+    try {
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/users?inp=${encodeURIComponent(input)}`);
+      console.log('Response from fake API:', response.data);
+      // Handle the API response here
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+  
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -97,8 +108,8 @@ export default function RootLayout({
                 </Text>
                 <Text style={{ fontWeight: "700" }} fontSize='md' ml={2}>Search Query</Text>
                 <Text fontSize='sm' ml={2} mt={1}>The Google results to this searchquery will be scraped.</Text>
-                <Input ml={2} width='auto' mt={3} placeholder='Example: #firstname #lastname linkedin profile' size='md' />
-                <Button ml={2} colorScheme='red' width='auto' mt={5}>Run for 10 rows</Button>
+                <Input value={input} onChange={(e) => setInput(e.target.value)} ml={2} width='auto' mt={3} placeholder='Example: #firstname #lastname linkedin profile' size='md' />
+                <Button ml={2} colorScheme='red' width='auto' mt={5} onClick={fetchDataFromAPI}>Run for 10 rows</Button>
                 <ModalCloseButton />
               </Flex>
             </ModalContent>
