@@ -25,6 +25,7 @@ export default function RootLayout({
 }>) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
+  const [response, setResponse] = useState('');
 
   // async function getChatGPTResponse(prompt: string) {
   //   const response = await fetch('https://api.openai.com/v1/completions', {
@@ -44,8 +45,21 @@ export default function RootLayout({
   // }
   async function fetchDataFromAPI() {
     try {
-      const response = await axios.get(`https://jsonplaceholder.typicode.com/users?inp=${encodeURIComponent(input)}`);
-      console.log('Response from fake API:', response.data);
+      const response = await fetch('http://localhost:5000/prompt', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            prompt: input,
+        }),
+    });
+    const dataRes = await response.json()
+    const { data } = dataRes
+    setResponse(data);
+
+      // const response = await axios.post(`http://localhost:5000/prompt`, {input});
+      console.log('Response from flask api:', data.data);
       // Handle the API response here
     } catch (error) {
       console.error('Error fetching data:', error);
