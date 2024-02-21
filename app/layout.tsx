@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AIPrompt from "./components/Prompt";
 import { Providers } from "./providers";
-import { Modal, ModalOverlay, ModalContent,  Input,  Text,  ModalCloseButton, Flex, Button, Link, } from '@chakra-ui/react';
+import { Modal, ModalOverlay, ModalContent, Input, Text, ModalCloseButton, Flex, Button, Link, Heading, Box, } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
@@ -65,39 +65,42 @@ export default function RootLayout({
       console.error('Error fetching data:', error);
     }
   }
-  
+
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Providers>
-          <Flex justifyContent="space-between" alignItems="flex-start" mt={3}>
-            <ul>
-              <li>
-                <Link href="/examples/basic">Basic</Link>
-              </li>
-              <li>
-                <Link href="/examples/getCellValue">Get Cell Value</Link>
-              </li>
-              <li>
-                <Link href="/examples/getSelection">Get Selection</Link>
-              </li>
-              <li>
-                <Link href="/examples/setCellValue">Set Cell Value</Link>
-              </li>
-              <li>
-                <Link href="/examples/setCellFormat">Format Cell</Link>
-              </li>
-              <li>
-                <Link href="/examples/autoFill">AutoFill Cell</Link>
-              </li>
-              <li>
-                <Link href="/examples/setSelection">Merge Selected Cells</Link>
-              </li>
-            </ul>
-      
-            <Button m={1} mr={4} border="2px solid #E2E8F0" onClick={() => setIsOpen(true)}> <SearchIcon w={4} h={4} mr={2}/>Ask AI</Button>
-          </Flex>
-          <div><AIPrompt /></div>
+    <html lang="en" >
+      <body className={inter.className}  >
+        <Providers >
+          <Box bg="#00000029" py={2}>
+            <Flex justifyContent="space-between" alignItems="center" mt={3} m={3}  >
+              <Heading as='h3' size='lg'>WorkRoom</Heading>
+              <ul>
+                <li>
+                  <Link href="/examples/basic" _hover={{ color: 'blue.500', fontWeight: 'normal', textDecoration:"underline" , transition: 'color 0.3s, font-weight 0.3s, '}}>Basic</Link>
+                </li>
+                <li>
+                  <Link href="/examples/getCellValue" _hover={{ color: 'blue.500', fontWeight: 'normal', textDecoration:"underline" ,  transition: 'color 0.3s, font-weight 0.3s, '}}>Get Cell Value</Link>
+                </li>
+                <li>
+                  <Link href="/examples/getSelection" _hover={{ color: 'blue.500', fontWeight: 'normal', textDecoration:"underline" ,  transition: 'color 0.3s, font-weight 0.3s, '}}>Get Selection</Link>
+                </li>
+                <li>
+                  <Link href="/examples/setCellValue" _hover={{ color: 'blue.500', fontWeight: 'normal',  textDecoration:"underline" ,  transition: 'color 0.3s, font-weight 0.3s, '}}>Set Cell Value</Link>
+                </li>
+                <li>
+                  <Link href="/examples/setCellFormat" _hover={{ color: 'blue.500', fontWeight: 'normal',  textDecoration:"underline" ,  transition: 'color 0.3s, font-weight 0.3s, '}}>Format Cell</Link>
+                </li>
+                <li>
+                  <Link href="/examples/autoFill" _hover={{ color: 'blue.500', fontWeight: 'normal',  textDecoration:"underline" ,   transition: 'color 0.3s, font-weight 0.3s, '}}>AutoFill Cell</Link>
+                </li>
+                <li>
+                  <Link href="/examples/setSelection" _hover={{ color: 'blue.500', fontWeight: 'normal',  textDecoration:"underline" ,   transition: 'color 0.3s, font-weight 0.3s,'}}>Merge Selected Cells</Link>
+                </li>
+              </ul>
+
+              <Button m={1} mr={4} colorScheme='red' border="2px solid #E53E3E" onClick={() => setIsOpen(true)}> <SearchIcon w={4} h={4} mr={2} />Ask AI</Button>
+            </Flex>
+          </Box>
+          {/* <div><AIPrompt /></div> */}
           {children}
 
           <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} size="md" isCentered={false} motionPreset="slideInBottom">
@@ -128,7 +131,7 @@ export default function RootLayout({
               </Flex>
             </ModalContent>
           </Modal>
-        </Providers>  
+        </Providers>
       </body>
     </html >
   );
