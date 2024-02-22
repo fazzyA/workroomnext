@@ -11,6 +11,7 @@ const AutoFillCell = () => {
     const [data, setData] = useState<Sheet[]>([
       {
         name: "Sheet1",
+        // t is type, fa ?
         celldata: [
           { r: 0, c: 0, v: { m: "1", v: 1, ct: { t: "n", fa: "General" } } },
           { r: 0, c: 1, v: { m: "2", v: 2, ct: { t: "n", fa: "General" } } },
