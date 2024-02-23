@@ -1,10 +1,13 @@
 'use client'
-
+import { useState } from "react";
 import { Workbook, WorkbookInstance } from "@fortune-sheet/react";
 import "@fortune-sheet/react/dist/index.css";
 import { useRef } from "react";
+import SearchModal from "./components/SearchModal"; 
 
 function Home (this: any) {
+  const [isOpen, setIsOpen] = useState(false); 
+
     const settings = {
         data: [{ name: 'Sheet1', celldata: [{ r: 0, c: 0, v: null }] }], // sheet data
         onChange: (data: any) => {
@@ -24,6 +27,7 @@ function Home (this: any) {
    
   return (
     <div style={{height: "100vh"}}>
+        <SearchModal isOpen={isOpen} onClose={() => setIsOpen(false)} setIsOpen={setIsOpen} />
         <Workbook {...settings} />
         {/* <div className="column column-25"><input type="text" /></div> */}
     </div>
