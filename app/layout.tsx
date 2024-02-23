@@ -23,7 +23,7 @@ const inter = Inter({ subsets: ["latin"] });
       //   children: React.ReactNode;
 // }>) {
   const RootLayout: React.FC<{children: React.ReactNode}> = ({ children }) => {
-    const [isOpen, setIsOpen] = useState(false); 
+    // const [isOpen, setIsOpen] = useState(false); 
     
     // async function getChatGPTResponse(prompt: string) {
       //   const response = await fetch('https://api.openai.com/v1/completions', {
@@ -45,7 +45,7 @@ const inter = Inter({ subsets: ["latin"] });
     <html lang="en" >
       <body className={inter.className}  >
         <Providers >
-          <Box bg="#00000029" py={2}>
+          {/* <Box bg="#00000029" py={2}>
             <Flex justifyContent="space-between" alignItems="center" mt={3} m={3}  >
               <Heading as='h3' size='lg'>WorkRoom</Heading>
               <ul>
@@ -73,9 +73,9 @@ const inter = Inter({ subsets: ["latin"] });
                </ul>
               <Button m={1} mr={4} colorScheme='red' border="2px solid #E53E3E" onClick={() => setIsOpen(true)}><SearchIcon w={4} h={4} mr={2} />Ask AI</Button>
             </Flex>
-          </Box>
+          </Box> */}
           {children}
-          <SearchModal isOpen={isOpen} onClose={() => setIsOpen(false)} setIsOpen={setIsOpen} />
+          {/* <SearchModal isOpen={isOpen} onClose={() => setIsOpen(false)} setIsOpen={setIsOpen} /> */}
         </Providers>
       </body>
     </html >
