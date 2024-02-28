@@ -32,7 +32,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, setIsOpen, setNewData
             const dataRes = await response.json()
             const { data } = dataRes
             console.log("type...", typeof data, data, JSON.parse(data))
-            
+            data.replace("json", "")
 
             // setRes("asdasd");
             // setNewData([{id:1}])

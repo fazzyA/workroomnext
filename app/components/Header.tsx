@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Flex, Button, Link, Heading, Box, } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import SearchModal from './SearchModal';
+import FileUpload from './FileUpload';
 interface HeaderProps {
   // setNewData: React.Dispatch<React.SetStateAction<any>>;
   setNewData: any;
@@ -39,6 +40,8 @@ const Header: React.FC<HeaderProps> = ({setNewData}) => {
       <Button m={1} mr={4} colorScheme='red' border="2px solid #E53E3E" onClick={() => setIsOpen(true)}><SearchIcon w={4} h={4} mr={2} />Ask AI</Button>
     </Flex>
     <SearchModal setNewData={setNewData} isOpen={isOpen} onClose={() => setIsOpen(false)} setIsOpen={setIsOpen} />
+    <div style={{margin:"auto 5px"}}><FileUpload setNewData={setNewData} />
+</div>
 
   </Box>
   

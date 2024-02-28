@@ -13,7 +13,7 @@ function Home (this: any) {
   const [newData, setNewData] = useState<any>([]);
   const ref = useRef<WorkbookInstance>(null);
 
-  console.log("newData.....", newData)
+  // console.log("newData.....", newData)
   const [data, setData] = useState<Sheet[]>([
     {
       id: "1",
@@ -27,7 +27,7 @@ function Home (this: any) {
   }, []);
 
 //  useEffect()
-   console.log("newdata", data)
+  //  console.log("newdata", data)
    
   return (
     <div style={{height: "100vh"}}>
