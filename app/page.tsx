@@ -27,7 +27,7 @@ function Home (this: any) {
   }, []);
 
 //  useEffect()
-  //  console.log("newdata", data)
+   console.log("....", data)
    
   return (
     <div style={{height: "100vh"}}>

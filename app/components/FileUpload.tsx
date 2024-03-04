@@ -18,7 +18,10 @@ const FileUpload: React.FC<FileUploadProps> = ({ setNewData }) => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log("I am in file upload", formData, file)
+            const { data } = response
+            console.log("🚀 ~ handleFileUpload ~ data:", data, typeof data)
+            // console.log("🚀 ~ handleFileUpload ~ response:", JSON.parse(data))
+            setNewData(data)
 
             // Process response and display spreadsheet in UI
             // Example: setWorkbookData(response.data);

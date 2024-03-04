@@ -63,7 +63,6 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, setIsOpen, setNewData
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value);
     };
-    console.log(".....", res)
     return (
         <>
             <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} size="md" isCentered={false} motionPreset="slideInBottom">
