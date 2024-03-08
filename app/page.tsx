@@ -31,16 +31,16 @@ function Home(this: any) {
   console.log("....", data)
 
   return (
-    <div style={{ height: "100vh", display:"flex" }}>
+    <div style={{ height: "100vh", display: "flex" }}>
       {/* <SearchModal setNewData={(data) => console.log("////", data)} isOpen={isOpen} onClose={() => setIsOpen(false)} setIsOpen={setIsOpen} /> */}
-      <div style={{ flex: 1, marginRight: "10px", width:"70px" }}>
-      <Header setNewData={(rd: any) => ref.current?.updateSheet([{ id: "1", name: "Sheet1", celldata: rd }])} />
-      {/* <Workbook {...settings} /> */}
-      <Workbook ref={ref} data={data} onChange={onChange} />
+      <div style={{ flex: 1, marginRight: "10px", maxWidth: "70%" }}>
+        <Header setNewData={(rd: any) => ref.current?.updateSheet([{ id: "1", name: "Sheet1", celldata: rd }])} />
+        {/* <Workbook {...settings} /> */}
+        <Workbook ref={ref} data={data} onChange={onChange} />
       </div>
       {/* <div className="column column-25"><input type="text" /></div> */}
-      <div>
-      <Chatbot />
+      <div style={{maxWidth: "30%"}}>
+        <Chatbot />
       </div>
     </div>
   );
