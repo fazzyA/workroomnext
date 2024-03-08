@@ -3,7 +3,6 @@
 import { Box, Button, Container, HStack, Input, VStack, Text } from "@chakra-ui/react";
 import Message from "./Message";
 import { FormEvent, useState } from "react";
-import {} from "@chakra-ui/icons"
 import { BsThreeDots } from "react-icons/bs";
 import { MdSubdirectoryArrowLeft } from "react-icons/md";
 import { BsStars } from "react-icons/bs";
