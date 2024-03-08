@@ -7,6 +7,7 @@ import SearchModal from "./components/SearchModal";
 import Header from "./components/Header";
 import { Sheet } from "@fortune-sheet/core";
 import Chatbot from "./components/Chatbot";
+import { Flex, Box } from "@chakra-ui/react";
 
 function Home(this: any) {
   // const [isOpen, setIsOpen] = useState(false); 
@@ -31,18 +32,27 @@ function Home(this: any) {
   console.log("....", data)
 
   return (
-    <div style={{ height: "100vh", display: "flex" }}>
-      {/* <SearchModal setNewData={(data) => console.log("////", data)} isOpen={isOpen} onClose={() => setIsOpen(false)} setIsOpen={setIsOpen} /> */}
-      <div style={{ flex: 1, marginRight: "10px", maxWidth: "70%" }}>
+    // <div style={{ height: "100vh", display: "flex" }}>
+    //   {/* <SearchModal setNewData={(data) => console.log("////", data)} isOpen={isOpen} onClose={() => setIsOpen(false)} setIsOpen={setIsOpen} /> */}
+    //   <div style={{ flex: 1, marginRight: "10px", maxWidth: "70%" }}>
+    //     <Header setNewData={(rd: any) => ref.current?.updateSheet([{ id: "1", name: "Sheet1", celldata: rd }])} />
+    //     {/* <Workbook {...settings} /> */}
+    //     <Workbook ref={ref} data={data} onChange={onChange} />
+    //   </div>
+    //   {/* <div className="column column-25"><input type="text" /></div> */}
+    //   <div style={{maxWidth: "30%"}}>
+    //     <Chatbot />
+    //   </div>
+    // </div>
+    <Flex>
+      <Box flexGrow="2" justifyContent="space-between" gap="2" maxWidth={"4xl"}>
         <Header setNewData={(rd: any) => ref.current?.updateSheet([{ id: "1", name: "Sheet1", celldata: rd }])} />
-        {/* <Workbook {...settings} /> */}
         <Workbook ref={ref} data={data} onChange={onChange} />
-      </div>
-      {/* <div className="column column-25"><input type="text" /></div> */}
-      <div style={{maxWidth: "30%"}}>
+      </Box>
+      <Box flexGrow="1">
         <Chatbot />
-      </div>
-    </div>
+      </Box>
+    </Flex>
   );
 }
 
