@@ -7,7 +7,7 @@ import SearchModal from "./components/SearchModal";
 import Header from "./components/Header";
 import { Sheet } from "@fortune-sheet/core";
 import Chatbot from "./components/Chatbot";
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, Box, GridItem, Grid } from "@chakra-ui/react";
 
 function Home(this: any) {
   // const [isOpen, setIsOpen] = useState(false); 
@@ -44,15 +44,25 @@ function Home(this: any) {
     //     <Chatbot />
     //   </div>
     // </div>
-    <Flex>
-      <Box flexGrow="2" justifyContent="space-between" gap="2" maxWidth={"4xl"}>
+    <Grid templateColumns="repeat(6, 1fr)" gap="5"
+      minHeight={{ md: "100vh", lg: "100vh" }}>
+      <GridItem
+        as="main"
+        colSpan={{ base: 6, md: 4, lg: 4, xl: 4 }}
+        mb={{ base: "400px" }}
+        h={{md:"full", lg:"full", xl:"full"}}
+      >
         <Header setNewData={(rd: any) => ref.current?.updateSheet([{ id: "1", name: "Sheet1", celldata: rd }])} />
+        {/* <Workbook {...settings} /> */}
         <Workbook ref={ref} data={data} onChange={onChange} />
-      </Box>
-      <Box flexGrow="1">
+      </GridItem>
+      <GridItem
+        as="aside"
+        colSpan={{ base: 6, md: 2, lg: 2, xl: 2 }}
+      >
         <Chatbot />
-      </Box>
-    </Flex>
+      </GridItem>
+    </Grid>
   );
 }
 
