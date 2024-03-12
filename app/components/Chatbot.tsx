@@ -9,6 +9,14 @@ import { BsStars } from "react-icons/bs";
 
 let messages = [
   {
+    text: "hello",
+    user: "other"
+  },
+  {
+    text: "hey",
+    user: "me"
+  },
+  {
     text: "How are you?",
     user: "other"
   }
@@ -32,11 +40,11 @@ const Chatbot = () => {
       setMessage("")
     };
     
-    return <Box bg={"green.50"}>
+    return <Box bg={"green.50"} h={{md:"full", lg:"full", xl:"full"}}>
       <Container h={"100vh"} bg={"gray.50"}>
         <VStack h="full" paddingY={"4"}>
           <HStack w={"full"} paddingY={"2"}>
-            <Text w={"full"} fontWeight={"bold"}>
+            <Text w={"full"} fontWeight={"bold"} fontSize={{base: '16px', md:'20px', lg:'24px'}}>
               Command center
             </Text>
             <Text>
@@ -55,7 +63,9 @@ const Chatbot = () => {
               <Input w="full" border={"none"}
                 placeholder="As Ai generate your custom data"
                 value={message}
-                onChange={(e) => setMessage(e.target.value)} />
+                onChange={(e) => setMessage(e.target.value)}
+                fontSize={{base:"12px", md:"16px", lg:"18px"}}
+                />
               <HStack w={"full"}>
                 <HStack w={"full"}>
                 <BsStars color="gray"/> 
