@@ -11,11 +11,11 @@ const Message = ({ text, uri, user = "other" }:Props) => {
         alignSelf={user === "me" ? "flex-end" : "flex-start"}
         borderRadius={"base"} paddingX={user === "me"? "4" : "2"} paddingY={"2"}>
         {
-            user === "other" && <Avatar src={uri} />
+            user === "other" && <Text fontWeight={"bold"} fontSize={{base:"12px", md:"16px", lg:"18px"}}>workroom :</Text>
         }
         <Text>{text}</Text>
         {
-            user === "me" && <Avatar src={uri} />
+            user === "me" && <Text fontWeight={"bold"} fontSize={{base:"12px", md:"16px", lg:"18px"}}>: user</Text>
         }
     </HStack>
 }
