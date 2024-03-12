@@ -7,6 +7,7 @@ import SearchModal from "./components/SearchModal";
 import Header from "./components/Header";
 import { Sheet } from "@fortune-sheet/core";
 import Chatbot from "./components/Chatbot";
+import { Flex, Box, GridItem, Grid } from "@chakra-ui/react";
 
 function Home(this: any) {
   // const [isOpen, setIsOpen] = useState(false); 
@@ -19,8 +20,6 @@ function Home(this: any) {
     {
       id: "1",
       name: "sheet1",
-      row: 10,
-      column: 15,
       celldata: [{ r: 0, c: 0, v: { v: "1" } }],
       order: 0,
     },
@@ -33,16 +32,37 @@ function Home(this: any) {
   console.log("....", data)
 
   return (
-    <div style={{ height: "100vh", display:"flex" }}>
-      <div style={{ flex: 1, marginRight: "10px", width:"70px" }}>
-      <Header setNewData={(rd: any) => ref.current?.updateSheet([{ id: "1", name: "Sheet1", celldata: rd }])} />
-      <Workbook ref={ref} data={data} onChange={onChange} />
-      </div>
-      {/* <div className="column column-25"><input type="text" /></div> */}
-      <div>
-      <Chatbot />
-      </div>
-    </div>
+    // <div style={{ height: "100vh", display: "flex" }}>
+    //   {/* <SearchModal setNewData={(data) => console.log("////", data)} isOpen={isOpen} onClose={() => setIsOpen(false)} setIsOpen={setIsOpen} /> */}
+    //   <div style={{ flex: 1, marginRight: "10px", maxWidth: "70%" }}>
+    //     <Header setNewData={(rd: any) => ref.current?.updateSheet([{ id: "1", name: "Sheet1", celldata: rd }])} />
+    //     {/* <Workbook {...settings} /> */}
+    //     <Workbook ref={ref} data={data} onChange={onChange} />
+    //   </div>
+    //   {/* <div className="column column-25"><input type="text" /></div> */}
+    //   <div style={{maxWidth: "30%"}}>
+    //     <Chatbot />
+    //   </div>
+    // </div>
+    <Grid templateColumns="repeat(6, 1fr)" gap="5"
+      minHeight={{ md: "100vh", lg: "100vh" }}>
+      <GridItem
+        as="main"
+        colSpan={{ base: 6, md: 4, lg: 4, xl: 4 }}
+        mb={{ base: "400px" }}
+        h={{md:"full", lg:"full", xl:"full"}}
+      >
+        <Header setNewData={(rd: any) => ref.current?.updateSheet([{ id: "1", name: "Sheet1", celldata: rd }])} />
+        {/* <Workbook {...settings} /> */}
+        <Workbook ref={ref} data={data} onChange={onChange} />
+      </GridItem>
+      <GridItem
+        as="aside"
+        colSpan={{ base: 6, md: 2, lg: 2, xl: 2 }}
+      >
+        <Chatbot />
+      </GridItem>
+    </Grid>
   );
 }
 
