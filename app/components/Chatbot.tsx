@@ -6,6 +6,7 @@ import { FormEvent, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { MdSubdirectoryArrowLeft } from "react-icons/md";
 import { BsStars } from "react-icons/bs";
+import axios from "axios";
 
 let messages = [
   {
@@ -25,8 +26,26 @@ const Chatbot = () => {
     const [message, setMessage] = useState("");
     const [status, setStatus] = useState(false);
     
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      const formData = new FormData();
+      formData.append('prompt', message);
+
+      try {
+        // Send file to Flask backend
+        const response = await axios.post('http://localhost:5000/chatbot', formData,
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        console.log("🚀 ~ handleSubmit ~ response:", response)
+        const { data: {data} } = response
+        console.log("🚀 ~ handleFileUpload ~ data:", data, typeof data)
+    } catch (error) {
+        console.error('Error uploading file:', error);
+    }
+
       if(!message){
         alert("hello")
       }
