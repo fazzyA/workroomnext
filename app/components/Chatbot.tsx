@@ -6,6 +6,7 @@ import { FormEvent, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { MdSubdirectoryArrowLeft } from "react-icons/md";
 import { BsStars } from "react-icons/bs";
+import { Icon } from '@chakra-ui/react'
 import axios from "axios";
 
 let messages = [
@@ -67,7 +68,7 @@ const Chatbot = () => {
               Command center
             </Text>
             <Text>
-              <BsThreeDots style={{fontSize:"1rem"}} />
+              <Icon as={BsThreeDots} />
             </Text>
           </HStack>
           <VStack h="full" w={"full"} overflow="auto">
@@ -87,11 +88,11 @@ const Chatbot = () => {
                 />
               <HStack w={"full"}>
                 <HStack w={"full"}>
-                <BsStars color="gray"/> 
+                <Icon as={BsStars} color="gray"/> 
                 <Text>Focus</Text>
                 </HStack>
                 <Button type="submit">
-                  <MdSubdirectoryArrowLeft />
+                  <Icon as={MdSubdirectoryArrowLeft} />
                 </Button>
               </HStack>
             </VStack>

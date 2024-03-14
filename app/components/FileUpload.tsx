@@ -1,3 +1,4 @@
+import { useAppContext } from "@/context";
 import axios from "axios";
 import React from "react";
 
@@ -6,6 +7,9 @@ interface FileUploadProps {
 }
 // React frontend component for file upload
 const FileUpload: React.FC<FileUploadProps> = ({ setNewData }) => {
+    const {sessionId} = useAppContext();
+    console.log("🚀 ~ sessionId from fileuplaod:", sessionId)
+
     const handleFileUpload = async (event: any) => {
         const file = event.target.files[0];
         const formData = new FormData();

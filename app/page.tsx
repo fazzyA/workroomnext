@@ -8,12 +8,15 @@ import Header from "./components/Header";
 import { Sheet } from "@fortune-sheet/core";
 import Chatbot from "./components/Chatbot";
 import { Flex, Box, GridItem, Grid } from "@chakra-ui/react";
+import { useAppContext } from "@/context";
 
 function Home(this: any) {
   // const [isOpen, setIsOpen] = useState(false); 
   const [isClicked, setIsClicked] = useState(false);
   const [newData, setNewData] = useState<any>([]);
   const ref = useRef<WorkbookInstance>(null);
+  const {sessionId} = useAppContext();
+  console.log("🚀 ~ Home ~ sessionId:", sessionId)
 
   // console.log("newData.....", newData)
   const [data, setData] = useState<Sheet[]>([
