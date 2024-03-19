@@ -17,7 +17,6 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
         <AppContext.Provider value={state}>
             {children}
         </AppContext.Provider>
-
     )
 }
 export function useAppContext(){
