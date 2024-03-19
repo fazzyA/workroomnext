@@ -13,7 +13,11 @@ const FileUpload: React.FC<FileUploadProps> = ({ setNewData }) => {
     const handleFileUpload = async (event: any) => {
         const file = event.target.files[0];
         const formData = new FormData();
-        formData.append('files', file);
+        const renamedFile = new File([file], `${sessionId}.${file.name.split('.').pop()}`, { type: file.type });
+        console.log("🚀 ~ handleFileUpload ~ renamedFile:", renamedFile)
+        formData.append('files', renamedFile);
+        // formData.append('files', file);
+
 
         try {
             // Send file to Flask backend

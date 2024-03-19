@@ -8,29 +8,33 @@ import { MdSubdirectoryArrowLeft } from "react-icons/md";
 import { BsStars } from "react-icons/bs";
 import { Icon } from '@chakra-ui/react'
 import axios from "axios";
+import { useAppContext } from "@/context";
 
 let messages = [
   {
-    text: "hello",
+    text: "Hello! How may I help you?",
     user: "other"
   },
-  {
-    text: "hey",
-    user: "me"
-  },
-  {
-    text: "How are you?",
-    user: "other"
-  }
 ]
 const Chatbot = () => {
     const [message, setMessage] = useState("");
     const [status, setStatus] = useState(false);
-    
+    const [botResponse, setBotResponse] = useState("");
+    const {sessionId} = useAppContext();
+    console.log("🚀 ~ sessionId from fileuplaod:", sessionId)
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const formData = new FormData();
       formData.append('prompt', message);
+      formData.append('sessionId', sessionId);
+      const newMessage = {
+        text: message,
+        user: status ? "other" : "me"
+      };
+      messages.push(newMessage);
+      setMessage("")
+
 
       try {
         // Send file to Flask backend
@@ -42,22 +46,24 @@ const Chatbot = () => {
         });
         console.log("🚀 ~ handleSubmit ~ response:", response)
         const { data: {data} } = response
+        setBotResponse(data)
         console.log("🚀 ~ handleFileUpload ~ data:", data, typeof data)
+        const newMessage = {
+          text: data,
+          user: "other"
+        };
+        messages.push(newMessage);
+        setMessage("")
+  
     } catch (error) {
         console.error('Error uploading file:', error);
     }
 
-      if(!message){
-        alert("hello")
-      }
+      // if(!message){
+      //   alert("hello")
+      // }
       // setStatus(!status)
     
-      const newMessage = {
-        text: message,
-        user: status ? "other" : "me"
-      };
-      messages.push(newMessage);
-      setMessage("")
     };
     
     return <Box bg={"green.50"} h={{md:"full", lg:"full", xl:"full"}}>
