@@ -1,4 +1,4 @@
-import { LoginForm } from "@/app/components/ui/loginForm";
+import { SignupForm } from "@/app/components/ui/signupForm";
 
 export default function LoginPage() {
     return (
@@ -9,7 +9,7 @@ export default function LoginPage() {
               Workroom
             </div>
           </div>
-          <LoginForm />
+          <SignupForm />
         </div>
       </main>
     );
