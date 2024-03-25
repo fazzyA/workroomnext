@@ -1,6 +1,6 @@
 "use client"
 import { register } from '@/actions/register'
-import { Alert, AlertIcon, Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, Input, Stack } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, Heading, Input, Stack } from '@chakra-ui/react'
 import { useFormik } from 'formik'
 import { useState, useTransition } from 'react'
 import * as Yup from 'yup'
@@ -13,9 +13,6 @@ export const SignupForm = (props: Props) => {
   const [success, setSuccess] = useState("")
 
   const SignupSchema = Yup.object().shape({
-    username: Yup.string()
-      .min(3, "too short")
-      .required(),
     email: Yup.string()
       .email("invalid email")
       .required(),
@@ -26,7 +23,6 @@ export const SignupForm = (props: Props) => {
   })
   const formik = useFormik({
     initialValues: {
-      username: "",
       email: "",
       password: ""
     },
@@ -47,23 +43,10 @@ export const SignupForm = (props: Props) => {
   })
 
   return (
-    <Box bg='lightgrey' w='70%' p={4} color='white' borderWidth='1px' borderRadius='lg'>
+    <Box w='50%' p={10} m={20} borderWidth='1px' borderRadius='lg'>
+      <Heading as='h4' size='sm'>Signup</Heading>
+
       <form onSubmit={formik.handleSubmit}>
-        <FormControl m={2} isInvalid={!!(formik.touched.username && formik.errors.username)}>
-          <FormLabel>Username</FormLabel>
-          <Input
-            type='text'
-            name='username'
-            onChange={formik.handleChange}
-            value={formik.values.username}
-            disabled={isPending}
-          />
-          {
-            (formik.errors.username || formik.touched.username) &&
-            <FormErrorMessage fontSize={"xs"}>{formik.errors.username}</FormErrorMessage>
-          }
-          {/* <FormHelperText>We&apos;ll never share your email.</FormHelperText> */}
-        </FormControl>
 
         <FormControl m={2} isInvalid={!!(formik.touched.email && formik.errors.email)}>
           <FormLabel>Email address</FormLabel>
