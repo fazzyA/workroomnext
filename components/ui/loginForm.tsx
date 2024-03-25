@@ -13,8 +13,10 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useState, useTransition } from "react";
+import { FcGoogle } from "react-icons/fc";
 import * as Yup from "yup";
 
 type Props = {};
@@ -23,6 +25,12 @@ export const LoginForm = (props: Props) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isPending, startTransition] = useTransition();
+
+  const handleSignIn = async (provider: "google") => {
+    signIn(provider, {
+      callbackUrl: ROUTES_PATH.DASHBOARD,
+    });
+  };
 
   const SignupSchema = Yup.object().shape({
     email: Yup.string().email("invalid email").required(),
@@ -104,6 +112,14 @@ export const LoginForm = (props: Props) => {
           h={8}
         >
           Login
+        </Box>
+        <Box
+          as="button"
+          type="button"
+          sx={{ marginLeft: "2rem", fontSize: "1.5rem" }}
+          onClick={() => handleSignIn("google")}
+        >
+          <FcGoogle className="h-5 w-5" />
         </Box>
       </form>
       <Link href={ROUTES_PATH.REGISTER}>
