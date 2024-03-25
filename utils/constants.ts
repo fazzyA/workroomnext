@@ -1,7 +1,7 @@
 const ROUTES_PATH = {
   // auth pages
   LOGIN: "/auth/login",
-  REGISTER: "/auth/register",
+  REGISTER: "/auth/signup",
 
   // private pages
   DASHBOARD: "/dashboard",
