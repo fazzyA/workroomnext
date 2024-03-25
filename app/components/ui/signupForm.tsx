@@ -2,6 +2,7 @@
 import { register } from '@/actions/register'
 import { Alert, AlertIcon, Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, Heading, Input, Stack } from '@chakra-ui/react'
 import { useFormik } from 'formik'
+import Link from 'next/link'
 import { useState, useTransition } from 'react'
 import * as Yup from 'yup'
 
@@ -96,6 +97,7 @@ export const SignupForm = (props: Props) => {
         <AlertIcon />
         {success}
       </Alert>}
+      <Link href='/login'><u>for login click here</u></Link>
     </Box>
 
   )

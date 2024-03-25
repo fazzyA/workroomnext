@@ -1,7 +1,8 @@
 "use client"
 import { login } from '@/actions/login'
-import { Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, Input, Stack } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, Heading, Input, Stack } from '@chakra-ui/react'
 import { useFormik } from 'formik'
+import Link from 'next/link'
 import { useState, useTransition } from 'react'
 import * as Yup from 'yup'
 
@@ -46,7 +47,8 @@ export const LoginForm = (props: Props) => {
   })
 
   return (
-      <Box bg='lightgrey' w='70%' p={4} color='white' borderWidth='1px' borderRadius='lg'>
+      <Box w='50%' p={10} m={20} borderWidth='1px' borderRadius='lg'>
+        <Heading as='h4' size='sm'>Login</Heading>
         <form onSubmit={formik.handleSubmit}>
           <FormControl m={2} isInvalid={!!(formik.touched.email && formik.errors.email)}>
             <FormLabel>Email address</FormLabel>
@@ -76,10 +78,11 @@ export const LoginForm = (props: Props) => {
               <FormErrorMessage fontSize={"xs"}>{formik.errors.password}</FormErrorMessage>
             }
           </FormControl>
-          <Box disabled={isPending} as='button' type='submit' borderRadius='md' bg='tomato' color='white' px={4} h={8}>
-            Signup
+          <Box disabled={isPending} as='button' type='submit' borderRadius='md' bg='black' color='white' px={4} h={8}>
+            Login
           </Box>
         </form>
+          <Link href='/signup'><u>create an account</u></Link>
       </Box>
 
   )
