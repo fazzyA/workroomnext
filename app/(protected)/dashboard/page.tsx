@@ -6,6 +6,7 @@ const Settings = async () => {
     <div>
       <div>protected settings page {JSON.stringify(session)}</div>
 
+      <h2>Add your dashboard content here</h2>
       <form
         action={async () => {
           "use server";
