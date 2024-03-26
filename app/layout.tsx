@@ -4,13 +4,13 @@ import { useState } from 'react';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import AIPrompt from "./components/Prompt";
+import AIPrompt from "@/components/Prompt";
 import { Providers } from "./providers";
 import { Flex, Button, Link, Heading, Box, } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-import SearchModal from './components/SearchModal';
+import SearchModal from '@/components/SearchModal';
 import { AppWrapper } from '@/context';
-import Header from './components/Header';
+import Header from '@/components/Header';
 import { db } from '@/lib/db';
 
 const inter = Inter({ subsets: ["latin"] });
