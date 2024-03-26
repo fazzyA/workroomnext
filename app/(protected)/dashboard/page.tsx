@@ -12,25 +12,10 @@ import { useAppContext } from "@/context";
 import DashboardWorkroom from "./example";
 
 const Settings = async () => {
-  // const session = await auth();
-  const logout = async () => {
-    "use server";
-    await signOut();
-  }
-
   return (
     <div>
-       {/* <div>protected settings page {JSON.stringify(session)}</div> */}
+      {/* <div>protected settings page {JSON.stringify(session)}</div> */}
 
-      {/*<h2>Add your dashboard content here</h2> */}
-      <form
-        action={async () => {
-          "use server";
-          await signOut();
-        }}
-      >
-        <button type="submit">sign out</button>
-      </form>
       <Header />
       <DashboardWorkroom />
       {/* <div>faiza</div> */}
